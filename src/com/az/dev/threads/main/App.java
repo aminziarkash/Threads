@@ -1,4 +1,4 @@
-package com.az.dev.threads;
+package com.az.dev.threads.main;
 
 /**
  * Created by aziarkash on 27-5-2016.
@@ -23,10 +23,13 @@ public class App {
     }
 
     private void threadScheduler() {
-        objectiveString = "The Thread Scheduler";
+        objectiveString = "Using Thread.sleep()";
         addSub(objectiveString);
 
-
+        NameRunnable nr = new NameRunnable();
+        Thread thread = new Thread(nr);
+        thread.setName(System.getProperty("user.name"));
+        thread.start();
 
         addSeparator();
     }

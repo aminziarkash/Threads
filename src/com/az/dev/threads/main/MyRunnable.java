@@ -1,4 +1,4 @@
-package com.az.dev.threads;
+package com.az.dev.threads.main;
 
 /**
  * Created by aziarkash on 31-5-2016.
