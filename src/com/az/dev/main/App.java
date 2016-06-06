@@ -1,11 +1,13 @@
 package com.az.dev.threads.main;
 
+import com.az.dev.threads.banking.AccountDanger;
+
 /**
  * Created by aziarkash on 27-5-2016.
  */
 public class App {
 
-    private String objectiveString;
+    public static String objectiveString;
 
     public static void main(String[] args) {
 
@@ -19,16 +21,35 @@ public class App {
 
         // app.startingAndRunningMultipleThreads();
 
-        app.threadScheduler();
+        // app.threadScheduler();
+
+        app.synchronizingSharedData();
+
+    }
+
+    private void synchronizingSharedData() {
+//        objectiveString = "Synchronizing thread access to shared data";
+//        addSub(objectiveString);
+//
+//        AccountDanger accountDanger = new AccountDanger();
+//        Thread aminsCard = new Thread(accountDanger);
+//        Thread varunsCard = new Thread(accountDanger);
+//        aminsCard.setName("Amin Ziarkash");
+//        varunsCard.setName("Varun Aggarwal");
+//        aminsCard.start();
+//        varunsCard.start();
+//
+//        addSeparator();
     }
 
     private void threadScheduler() {
-        objectiveString = "Using Thread.sleep()";
+        objectiveString = "Using Thread.sleep() and setPriority()";
         addSub(objectiveString);
 
         NameRunnable nr = new NameRunnable();
         Thread thread = new Thread(nr);
         thread.setName(System.getProperty("user.name"));
+        thread.setPriority(9); // 1 - 10
         thread.start();
 
         addSeparator();
@@ -96,7 +117,7 @@ public class App {
         c.start();
     }
 
-    public void addSub(String objectiveString) {
+    public static void addSub(String objectiveString) {
         for (int i = 0; i < objectiveString.length() + 4; i++) {
             System.out.print("=");
         }
@@ -107,7 +128,7 @@ public class App {
         System.out.println("\n");
     }
 
-    public void addSeparator() {
+    public static void addSeparator() {
         System.out.println("\n\033[1m**************************************************************************************************************\033[0m");
     }
 
