@@ -1,6 +1,6 @@
-package com.az.dev.threads.exercises;
+package com.az.dev.exercises;
 
-import com.az.dev.threads.main.App;
+import com.az.dev.main.App;
 
 /**
  * Created by bmziarkash on 6/5/16.

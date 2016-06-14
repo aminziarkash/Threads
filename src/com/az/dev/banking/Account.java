@@ -1,4 +1,4 @@
-package com.az.dev.threads.banking;
+package com.az.dev.banking;
 
 /**
  * Created by bmziarkash on 6/5/16.

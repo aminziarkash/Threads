@@ -1,4 +1,4 @@
-package com.az.dev.threads.exercises;
+package com.az.dev.exercises;
 
 /**
  * Created by aziarkash on 3-6-2016.

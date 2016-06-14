@@ -1,6 +1,4 @@
-package com.az.dev.threads.main;
-
-import com.az.dev.threads.banking.AccountDanger;
+package com.az.dev.main;
 
 /**
  * Created by aziarkash on 27-5-2016.
@@ -14,51 +12,25 @@ public class App {
         App app = new App();
 
         // DEFINING INSTANTIATING AND STARTING
+        app.definingThread();
 
-        // app.definingThread();
+        app.runByName();
 
-        // app.runByName();
+        app.startingAndRunningMultipleThreads();
 
-        // app.startingAndRunningMultipleThreads();
+        app.threadScheduler();
 
-        // app.threadScheduler();
-
-        app.synchronizingSharedData();
-
-    }
-
-    private void synchronizingSharedData() {
-//        objectiveString = "Synchronizing thread access to shared data";
-//        addSub(objectiveString);
-//
-//        AccountDanger accountDanger = new AccountDanger();
-//        Thread aminsCard = new Thread(accountDanger);
-//        Thread varunsCard = new Thread(accountDanger);
-//        aminsCard.setName("Amin Ziarkash");
-//        varunsCard.setName("Varun Aggarwal");
-//        aminsCard.start();
-//        varunsCard.start();
-//
-//        addSeparator();
     }
 
     private void threadScheduler() {
-        objectiveString = "Using Thread.sleep() and setPriority()";
-        addSub(objectiveString);
-
         NameRunnable nr = new NameRunnable();
         Thread thread = new Thread(nr);
         thread.setName(System.getProperty("user.name"));
         thread.setPriority(9); // 1 - 10
         thread.start();
-
-        addSeparator();
     }
 
     private void startingAndRunningMultipleThreads() {
-        objectiveString = "Starting and Running Multiple Threads";
-        addSub(objectiveString);
-
         NameRunnable nr = new NameRunnable();
         Thread t1 = new Thread(nr);
         Thread t2 = new Thread(nr);
@@ -72,32 +44,19 @@ public class App {
         t2.start();
         t3.start();
         // t1.start(); NOT POSSIBLE!! will throw an IllegalThreadException
-
-        addSeparator();
     }
 
     private void runByName() {
-        objectiveString = "Run threads by name";
-        addSub(objectiveString);
-
         NameRunnable nr = new NameRunnable();
         Thread thread = new Thread(nr);
         thread.setName("Amin");
         thread.start();
-
-        addSeparator();
     }
 
 
     private void definingThread() {
-        objectiveString = "Defining Thread";
-        addSub(objectiveString);
-
         definingByExtendingThreadClass();
-
         definingByImplementingRunnableInterface();
-
-        addSeparator();
     }
 
     private void definingByExtendingThreadClass() {
@@ -132,4 +91,34 @@ public class App {
         System.out.println("\n\033[1m**************************************************************************************************************\033[0m");
     }
 
+}
+
+class TestClass implements Runnable {
+    volatile int x;
+    public void run(){ x = 5; }
+    public static void main(String[] args) {
+        TestClass tc = new TestClass();
+        tc.x = 10;
+        new Thread(tc).start(); // 1       
+        System.out.println(tc.x);
+    }
+}
+
+class A extends Thread {
+
+    public void run() {
+        System.out.println("Starting loop");
+        while (true) {
+        }
+    }
+}
+
+class TestClass1 {
+
+    public static void main(String args[]) throws Exception {
+        A a = new A();
+        a.start();
+        Thread.sleep(1000);
+        a.interrupt();
+    }
 }

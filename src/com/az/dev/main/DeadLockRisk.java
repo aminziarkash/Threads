@@ -18,7 +18,7 @@ public class DeadLockRisk implements Runnable {
     public static void main(String[] args) {
         DeadLockRisk runnable = new DeadLockRisk();
         Thread t1 = new Thread(runnable);
-        Thread t2 = new Thread();
+        Thread t2 = new Thread(runnable);
         t1.start();
         t2.start();
     }
